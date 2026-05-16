@@ -15,18 +15,19 @@ Sử dụng **Playwright + Python** để kiểm thử hệ thống Mượn sác
 
 > **⚠️ Sinh viên: Điền thông tin nhóm vào bảng dưới đây trước khi nộp bài.**
 
-|              | Thông tin                    |
-| ------------ | ---------------------------- |
-| **Tên nhóm** | `<!-- VD: Nhóm 1 -->`        |
-| **Lớp**      | `<!-- VD: SE001.P11 -->`     |
-| **Học kỳ**   | `<!-- VD: HK2 2025-2026 -->` |
+| | Thông tin |
+|---|---|
+| **Tên nhóm** | Nhóm 29 |
+| **Lớp** | 252ICT2012.L1 |
+| **Học kỳ** | HK2 2025-2026 |
 
-| #   | MSSV | Họ và tên | Vai trò     |
-| --- | ---- | --------- | ----------- |
-| 1   |      |           | Nhóm trưởng |
-| 2   |      |           | Thành viên  |
-| 3   |      |           | Thành viên  |
-| 4   |      |           | Thành viên  |
+| # | MSSV | Họ và tên | Vai trò |
+|---|------|-----------|---------|
+| 1 | 2410299 | Nguyễn Xuân Hiển | Nhóm trưởng |
+| 2 | 23BA14224 | Lê Bá Ninh | Thành viên |
+| 3 | 23BA14120 | Đặng Việt Hoàng | Thành viên |
+| 4 | 23BA14278 | Nguyễn Quang Thuần | Thành viên |
+| 5 | 23BA14145 | Nguyễn Doãn Kha | Thành viên |
 
 ---
 
