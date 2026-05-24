@@ -21,13 +21,13 @@ Sử dụng **Playwright + Python** để kiểm thử hệ thống Mượn sác
 | **Lớp** | 252ICT2012.L1 |
 | **Học kỳ** | HK2 2025-2026 |
 
-| # | MSSV | Họ và tên | Vai trò |
-|---|------|-----------|---------|
-| 1 | 2410299 | Nguyễn Xuân Hiển | Nhóm trưởng |
-| 2 | 23BA14224 | Lê Bá Ninh | Thành viên |
-| 3 | 23BA14120 | Đặng Việt Hoàng | Thành Viên |
-| 4 | 23BA14278 | Nguyễn Quang Thuần | Thành viên |
-| 5 | 23BA14145 | Nguyễn Doãn Kha | Thành viên |
+| #   | MSSV      | Họ và tên          | Vai trò     |
+| --- | --------- | ------------------ | ----------- |
+| 1   | 2410299   | Nguyễn Xuân Hiển   | Nhóm trưởng |
+| 2   | 23BA14224 | Lê Bá Ninh         | Thành viên  |
+| 3   | 23BA14120 | Đặng Việt Hoàng    | Thành viên  |
+| 4   | 23BA14278 | Nguyễn Quang Thuần | Thành viên  |
+| 5   | 23BA14145 | Nguyễn Doãn Kha    | Thành viên  |
 
 ---
 

@@ -10,13 +10,21 @@ __pycache__/
 # Screenshots
 screenshots/
 
-# IDE
+# Editor
 .vscode/
 .idea/
+*.swp
+*.swo
+.obsidian/**
 
 # OS
 .DS_Store
 Thumbs.db
+*.ico
+desktop.ini
+
+# Guides and examples
+docs/**
 
 # Playwright
 playwright-report/
