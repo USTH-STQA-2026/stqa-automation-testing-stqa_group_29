@@ -15,7 +15,7 @@ screenshots/
 .idea/
 *.swp
 *.swo
-.obsidian/**
+**/.obsidian/**
 
 # OS
 .DS_Store

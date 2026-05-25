@@ -2,8 +2,8 @@
 Login Tests (*Kiểm thử Đăng nhập*) — Library Book Borrowing System (*Hệ thống Mượn sách thư viện*)
 
 📖 Textbook concepts in this file:
-   - RIPR Model (Ch.2): See [R], [I], [P], [R✓] comments in TC-01
-   - Data-Driven Testing / @parametrize (Ch.3 §3.3.2): See hint in TC-02/TC-03
+- RIPR Model (Ch.2): See [R], [I], [P], [R✓] comments in TC-01
+- Data-Driven Testing / @parametrize (Ch.3 §3.3.2): See hint in TC-02/TC-03
 
 This file contains 1 completed example (TC-01).
 Students must complete TC-02 and TC-03.
@@ -14,7 +14,6 @@ Sinh viên cần hoàn thành TC-02 và TC-03.*)
 import os
 import pytest
 from conftest import enable_flutter_semantics, flutter_fill, flutter_click_button, wait_for_flutter, SCREENSHOT_DIR
-
 
 def test_login_success(page, test_config):
     """TC-01: Login success with valid credentials (*Đăng nhập thành công với thông tin hợp lệ*)
@@ -86,8 +85,7 @@ def test_login_fail_wrong_password(page, test_config):
         3. Enter correct Email (from test_config["email"]) (*Nhập Email đúng*)
         4. Enter wrong Password (e.g. "wrongpassword") (*Nhập Mật khẩu sai*)
         5. Click "Đăng nhập" (*Click "Đăng nhập"*)
-        6. Assert: URL still on login page OR error message shown
-           (*Assert: URL vẫn ở trang đăng nhập HOẶC có thông báo lỗi*)
+        6. Assert: URL still on login page OR error message shown (*Assert: URL vẫn ở trang đăng nhập HOẶC có thông báo lỗi*)
     """
     # TODO: Students implement here (Sinh viên viết code ở đây)
     pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
@@ -106,8 +104,7 @@ def test_login_fail_empty_fields(page, test_config):
     Suggested steps (*Gợi ý các bước*):
         1. Navigate to login page (*Truy cập trang đăng nhập*)
         2. Enable Flutter semantics (*Bật Flutter semantics*)
-        3. Do NOT enter Email/Password — click "Đăng nhập" immediately
-           (*KHÔNG nhập Email/Mật khẩu — click "Đăng nhập" ngay*)
+        3. Do NOT enter Email/Password — click "Đăng nhập" immediately (*KHÔNG nhập Email/Mật khẩu — click "Đăng nhập" ngay*)
         4. Assert: URL still on login page (*Assert: URL vẫn ở trang đăng nhập*)
     """
     # TODO: Students implement here (Sinh viên viết code ở đây)

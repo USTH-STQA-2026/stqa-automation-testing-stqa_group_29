@@ -6,13 +6,13 @@ Students must complete ALL 4 test cases in this file.
 
 Hints (*Gợi ý*):
     - After logging in, use flutter_fill() to type into the search box
-      (*Sau khi đăng nhập, dùng flutter_fill() để nhập vào ô tìm kiếm*)
+    (*Sau khi đăng nhập, dùng flutter_fill() để nhập vào ô tìm kiếm*)
     - Search box aria-label: "Tìm kiếm theo tên sách hoặc tác giả..."
     - Category filter aria-label: "Lọc theo thể loại (VD: Công nghệ, Kinh tế...)"
     - Each book card has role="group" and aria-label containing book info
-      (*Mỗi card sách có role="group" và aria-label chứa thông tin sách*)
+    (*Mỗi card sách có role="group" và aria-label chứa thông tin sách*)
     - Use login() helper from conftest.py to log in before testing
-      (*Dùng login() helper từ conftest.py để đăng nhập trước khi test*)
+    (*Dùng login() helper từ conftest.py để đăng nhập trước khi test*)
 """
 import os
 import time
@@ -72,9 +72,9 @@ def test_filter_by_category(page, test_config):
     Hints (*Gợi ý*):
         - flutter_fill(page, "Lọc theo thể loại (VD: Công nghệ, Kinh tế...)", "Công nghệ")
         - Get book list: page.locator('flt-semantics[role="group"][aria-label*="Mã: BOOK"]')
-          (*Lấy danh sách sách*)
+        (*Lấy danh sách sách*)
         - Loop through each book, verify aria-label contains "Công nghệ"
-          (*Lặp qua từng sách, kiểm tra aria-label chứa "Công nghệ"*)
+        (*Lặp qua từng sách, kiểm tra aria-label chứa "Công nghệ"*)
     """
     # TODO: Students implement here (Sinh viên viết code ở đây)
     pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
