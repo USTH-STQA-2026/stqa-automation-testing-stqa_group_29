@@ -16,13 +16,7 @@ Hints (*Gợi ý*):
     (*Sau chuyển EN: text tiếng Anh có thể xuất hiện*)
 """
 import os
-import time
-import pytest
-from conftest import (
-    enable_flutter_semantics, flutter_fill, flutter_click_button,
-    login, SCREENSHOT_DIR,
-)
-
+from conftest import enable_flutter_semantics, flutter_fill, flutter_click_button, wait_for_flutter, SCREENSHOT_DIR
 
 def test_logout(page, test_config):
     """TC-11: Logout success (*Đăng xuất thành công*)
@@ -40,8 +34,22 @@ def test_logout(page, test_config):
         4. Assert: "Đăng nhập" button or Email input exists
         (*Assert: có nút "Đăng nhập" hoặc ô input Email*)
     """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
-    pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
+    page.goto(test_config["base_url"], wait_until="networkidle", timeout=60000)
+    enable_flutter_semantics(page)
+    flutter_fill(page, "Email", test_config["email"])
+    flutter_fill(page, "Mật khẩu", test_config["password"])
+    flutter_click_button(page, "Đăng nhập")
+    wait_for_flutter(page, text="Đăng xuất")
+    
+    flutter_click_button(page, "Đăng xuất")
+    wait_for_flutter(page, text="Đăng nhập")
+    page.screenshot(path=os.path.join(SCREENSHOT_DIR, "TC-11-logout.png"))
+    sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
+    has_login = "Đăng nhập" in sem_text
+    has_email_input = "Email" in sem_text
+    has_password_input = "Mật khẩu" in sem_text
+    assert has_login or has_email_input or has_password_input, \
+        f"Đăng xuất thất bại: không tìm thấy nút Đăng nhập, ô nhập email hoặc ô nhập mật khẩu"
 
 
 def test_switch_language_to_english(page, test_config):
@@ -60,5 +68,19 @@ def test_switch_language_to_english(page, test_config):
         4. Get sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
         5. Assert: "Logout" or "Borrow" or "Library" in sem_text
     """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
-    pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
+    page.goto(test_config["base_url"], wait_until="networkidle", timeout=60000)
+    enable_flutter_semantics(page)
+    flutter_fill(page, "Email", test_config["email"])
+    flutter_fill(page, "Mật khẩu", test_config["password"])
+    flutter_click_button(page, "Đăng nhập")
+    wait_for_flutter(page, text="Đăng xuất")
+    
+    flutter_click_button(page, "EN")
+    wait_for_flutter(page, text="Library")
+    page.screenshot(path=os.path.join(SCREENSHOT_DIR, "TC-12-switch-language-to-english.png"))
+    sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
+    has_signout = "Sign out" in sem_text
+    has_borrowed = "Borrowed" in sem_text
+    has_library = "Library" in sem_text
+    assert has_signout or has_borrowed or has_library, \
+        f"English UI switch failed: some elements of English UI such as Logout, Borrowed or Library not found"

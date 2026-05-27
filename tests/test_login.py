@@ -37,7 +37,7 @@ def test_login_success(page, test_config):
     # [P] Propagation: Chờ trạng thái lan truyền ra UI — nút "Đăng xuất" xuất hiện
     # (Smart Wait: thay vì time.sleep(5) — nhanh hơn và ổn định hơn)
     wait_for_flutter(page, text="Đăng xuất")
-    page.screenshot(path=os.path.join(SCREENSHOT_DIR, "login_success.png"))
+    page.screenshot(path=os.path.join(SCREENSHOT_DIR, "TC-01-login_success.png"))
 
     # [R✓] Revealability: Kiểm tra kết quả — Test Oracle phát hiện lỗi nếu có
     sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
@@ -75,10 +75,10 @@ def test_login_fail(page, test_config, email, password, tc_id):
     blank_input_message = "Vui lòng nhập email và mật khẩu"
     if tc_id == "TC-02":
         wait_for_flutter(page, text=wrong_password_message)
-        page.screenshot(path=os.path.join(SCREENSHOT_DIR, "login_failure_wrong_password.png"))
+        page.screenshot(path=os.path.join(SCREENSHOT_DIR, "TC-02-login_failure_wrong_password.png"))
     elif tc_id == "TC-03":
         wait_for_flutter(page, text=blank_input_message)
-        page.screenshot(path=os.path.join(SCREENSHOT_DIR, "login_failure_blank_input.png"))
+        page.screenshot(path=os.path.join(SCREENSHOT_DIR, "TC-03-login_failure_blank_input.png"))
     
     sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
     if tc_id == "TC-02":
