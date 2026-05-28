@@ -111,17 +111,29 @@ def test_filter_by_category(page, test_config):
 
 
 def test_search_by_author(page, test_config):
-    """TC-07: Search book by author name (*Tìm kiếm sách theo tên tác giả*)
+    """TC-07: Search book by author name"""
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
+    login(page, test_config)
 
-    Description (*Mô tả*):
-        Log in → search author name (e.g. "Nguyễn Minh Đức") → verify results found.
-        (*Đăng nhập → tìm kiếm tên tác giả → kiểm tra có kết quả.*)
+    flutter_fill(
+        page,
+        "Tìm kiếm theo tên sách hoặc tác giả...",
+        "Nguyễn Minh Đức"
+    )
 
-    Hints (*Gợi ý*):
-        - flutter_fill(page, "Tìm kiếm theo tên sách hoặc tác giả...", "Nguyễn Minh Đức")
-        - Verify: page.locator('flt-semantics[aria-label*="Nguyễn Minh Đức"]').count() > 0
-    """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
-    pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
+    page.wait_for_timeout(3000)
+
+    page.screenshot(
+        path=os.path.join(
+            SCREENSHOT_DIR,
+            "TC-07-search_by_author.png"
+        )
+    )
+
+    books = page.locator(
+        'flt-semantics[aria-label*="Nguyễn Minh Đức"]'
+    ).count()
+
+    assert books > 0, \
+        "No books found for author Nguyễn Minh Đức"
+    
