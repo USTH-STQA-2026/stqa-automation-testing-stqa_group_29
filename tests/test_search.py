@@ -18,100 +18,109 @@ import os
 import time
 import pytest
 from conftest import (
-    enable_flutter_semantics, flutter_fill, flutter_click_button,
-    login, SCREENSHOT_DIR,
+    enable_flutter_semantics,
+    flutter_fill,
+    flutter_click_button,
+    login,
+    wait_for_flutter,
+    SCREENSHOT_DIR,
 )
 
 
 def test_search_book_by_name(page, test_config):
-    """TC-04: Search book by name – results found (*Tìm kiếm sách theo tên — tìm thấy kết quả*)
+    """TC-04: Search book by name"""
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
-
-    Description (*Mô tả*):
-        Log in → search keyword "Flutter" → verify Flutter books appear in results.
-        (*Đăng nhập → tìm kiếm từ khóa "Flutter" → kiểm tra có sách Flutter trong kết quả.*)
-
-    Hints (*Gợi ý*):
-        - login(page, test_config)
-        - flutter_fill(page, "Tìm kiếm theo tên sách hoặc tác giả...", "Flutter")
-        - Verify: page.locator('flt-semantics[aria-label*="Flutter"]').count() > 0
-    """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
     login(page, test_config)
 
-    flutter_fill( page, "Tìm kiếm theo tên sách hoặc tác giả...", "Flutter")
+    flutter_fill(
+        page,
+        "Tìm kiếm theo tên sách hoặc tác giả...",
+        "Flutter"
+    )
 
-    page.wait_for_timeout(3000)
-    page.screenshot( path=os.path.join(SCREENSHOT_DIR, "search_flutter.png"))
+    wait_for_flutter(page, text="Flutter")
 
-    books = page.locator( 'flt-semantics[aria-label*="Flutter"]').count()
+    page.screenshot(
+        path=os.path.join(
+            SCREENSHOT_DIR,
+            "TC-04-search_book_by_name.png"
+        )
+    )
 
-    assert books > 0
+    books = page.locator(
+        'flt-semantics[aria-label*="Flutter"]'
+    ).count()
+
+    assert books > 0, \
+        "No Flutter books found"
+
+
 def test_search_book_no_result(page, test_config):
-    """TC-05: Search book – no results (*Tìm kiếm sách — không có kết quả*)
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
-
-    Description (*Mô tả*):
-        Log in → search a non-existent keyword (e.g. "xyz_khong_ton_tai_12345")
-        → verify no books are displayed.
-        (*Đăng nhập → tìm kiếm từ khóa không tồn tại → kiểm tra không có sách nào hiển thị.*)
-
-    Hints (*Gợi ý*):
-        - Verify: page.locator('flt-semantics[role="group"][aria-label*="Mã: BOOK"]').count() == 0
-    """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
     login(page, test_config)
 
-    flutter_fill( page, "Tìm kiếm theo tên sách hoặc tác giả...", "xyz_khong_ton_tai_12345")
+    flutter_fill(
+        page,
+        "Tìm kiếm theo tên sách hoặc tác giả...",
+        "xyz_khong_ton_tai_12345"
+    )
 
-    page.wait_for_timeout(3000)
+   
+    wait_for_flutter(page, text="Không")  # hoặc text của empty state
 
-    books = page.locator( 'flt-semantics[role="group"][aria-label*="Mã: BOOK"]').count()
-    page.screenshot( path=os.path.join(SCREENSHOT_DIR, "search_no_result.png"))
+    page.screenshot(
+        path=os.path.join(
+            SCREENSHOT_DIR,
+            "TC-05-search_book_no_result.png"
+        )
+    )
 
-    assert books == 0
+    books = page.locator(
+        'flt-semantics[role="group"][aria-label*="Mã: BOOK"]'
+    ).count()
+
+    assert books == 0, \
+        "Expected no books but still found results"
+
 
 def test_filter_by_category(page, test_config):
-    """TC-06: Filter books by category 'Công nghệ' (*Lọc sách theo thể loại 'Công nghệ'*)
+    """TC-06: Filter by category Công nghệ"""
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
-
-    Description (*Mô tả*):
-        Log in → enter "Công nghệ" in the category filter → verify all displayed books
-        belong to the "Công nghệ" category.
-        (*Đăng nhập → nhập "Công nghệ" vào ô lọc thể loại → kiểm tra tất cả sách
-        hiển thị đều thuộc thể loại Công nghệ.*)
-
-    Hints (*Gợi ý*):
-        - flutter_fill(page, "Lọc theo thể loại (VD: Công nghệ, Kinh tế...)", "Công nghệ")
-        - Get book list: page.locator('flt-semantics[role="group"][aria-label*="Mã: BOOK"]')
-        (*Lấy danh sách sách*)
-        - Loop through each book, verify aria-label contains "Công nghệ"
-        (*Lặp qua từng sách, kiểm tra aria-label chứa "Công nghệ"*)
-    """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
     login(page, test_config)
 
-    flutter_fill( page, "Lọc theo thể loại (VD: Công nghệ, Kinh tế...)", "Công nghệ")
+    flutter_fill(
+        page,
+        "Lọc theo thể loại (VD: Công nghệ, Kinh tế...)",
+        "Công nghệ"
+    )
 
-    page.wait_for_timeout(3000)
+    wait_for_flutter(page, text="Công nghệ")
 
-    page.screenshot( path=os.path.join(SCREENSHOT_DIR, "filter_category.png"))
+    page.screenshot(
+        path=os.path.join(
+            SCREENSHOT_DIR,
+            "TC-06-filter_by_category.png"
+        )
+    )
 
-    books = page.locator( 'flt-semantics[role="group"][aria-label*="Mã: BOOK"]')
+    books = page.locator(
+        'flt-semantics[role="group"][aria-label*="Mã: BOOK"]'
+    )
 
     count = books.count()
+
+    assert count > 0, \
+        "No books displayed after filtering"
 
     for i in range(count):
         text = books.nth(i).get_attribute("aria-label")
 
-        assert "Công nghệ" in text
+        assert "Công nghệ" in text, \
+            f"Book {i+1} is not in Công nghệ category"
 
 
 def test_search_by_author(page, test_config):
-    """TC-07: Search book by author name"""
+    """TC-07: Search by author"""
 
     login(page, test_config)
 
@@ -121,7 +130,10 @@ def test_search_by_author(page, test_config):
         "Nguyễn Minh Đức"
     )
 
-    page.wait_for_timeout(3000)
+    wait_for_flutter(
+        page,
+        text="Nguyễn Minh Đức"
+    )
 
     page.screenshot(
         path=os.path.join(
@@ -136,4 +148,3 @@ def test_search_by_author(page, test_config):
 
     assert books > 0, \
         "No books found for author Nguyễn Minh Đức"
-    
