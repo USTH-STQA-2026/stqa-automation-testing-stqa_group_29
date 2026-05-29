@@ -24,11 +24,8 @@ from conftest import (
     login, SCREENSHOT_DIR,
 )
 
-
 def test_borrow_book(page, test_config):
     """TC-08: Borrow an available book (*Mượn sách có trạng thái 'Có sẵn'*)
-
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
 
     Description (*Mô tả*):
         Log in → find an "Available" book → click "Mượn sách này" → confirm dialog
@@ -50,7 +47,7 @@ def test_borrow_book(page, test_config):
         (*Assert: "Đang mượn" hoặc "thành công" xuất hiện*)
     """
     # TODO: Students implement here (Sinh viên viết code ở đây)
-   # 1. Đăng nhập vào hệ thống
+    # 1. Đăng nhập vào hệ thống
     login(page, test_config)
     enable_flutter_semantics(page)
 
@@ -84,8 +81,6 @@ def test_borrow_book(page, test_config):
 def test_view_borrowed_books(page, test_config):
     """TC-09: View borrowed books list (*Xem danh sách sách đang mượn — tab Mượn / Trả*)
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
-
     Description (*Mô tả*):
         Log in → switch to "Mượn / Trả" tab → verify borrowed books are shown.
         (*Đăng nhập → chuyển sang tab "Mượn / Trả" → kiểm tra có sách đang mượn.*)
@@ -95,10 +90,8 @@ def test_view_borrowed_books(page, test_config):
         - Verify: books with "Đang mượn" in aria-label, or "Trả sách" button exists
         (*Kiểm tra: có sách với aria-label chứa "Đang mượn" hoặc có nút "Trả sách"*)
     """
-    # TODO: Students implement here (Sinh viên viết code ở đây)
     # 1. Đăng nhập vào hệ thống
     login(page, test_config)
-    enable_flutter_semantics(page)
 
     # 2. Chuyển sang tab "Mượn / Trả"
     borrow_tab = page.locator('flt-semantics[role="tab"][aria-label="Mượn / Trả"]')
@@ -117,11 +110,8 @@ def test_view_borrowed_books(page, test_config):
         "Lỗi: Không tìm thấy bất kỳ cuốn sách nào đang mượn hoặc không thấy nút 'Trả sách' trong tab Mượn / Trả."
     page.screenshot(path=f"{test_config['screenshot_dir']}/TC-09_view_borrowed_books.png")
 
-
 def test_return_book(page, test_config):
     """TC-10: Return a borrowed book (*Trả sách đang mượn*)
-
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
 
     Description (*Mô tả*):
         Log in → go to "Mượn / Trả" tab → click "Trả sách" → verify book is returned.
@@ -137,7 +127,6 @@ def test_return_book(page, test_config):
     # TODO: Students implement here (Sinh viên viết code ở đây)
     # 1. Đăng nhập vào hệ thống
     login(page, test_config)
-    enable_flutter_semantics(page)
 
     # 2. Chuyển sang tab "Mượn / Trả"
     borrow_tab = page.locator('flt-semantics[role="tab"][aria-label="Mượn / Trả"]')

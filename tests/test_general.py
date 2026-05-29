@@ -16,12 +16,10 @@ Hints (*Gợi ý*):
     (*Sau chuyển EN: text tiếng Anh có thể xuất hiện*)
 """
 import os
-from conftest import enable_flutter_semantics, flutter_fill, flutter_click_button, wait_for_flutter, SCREENSHOT_DIR
+from conftest import login, enable_flutter_semantics, flutter_fill, flutter_click_button, wait_for_flutter, SCREENSHOT_DIR
 
 def test_logout(page, test_config):
     """TC-11: Logout success (*Đăng xuất thành công*)
-
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
 
     Description (*Mô tả*):
         Log in → click Logout → verify page returns to login screen.
@@ -34,12 +32,7 @@ def test_logout(page, test_config):
         4. Assert: "Đăng nhập" button or Email input exists
         (*Assert: có nút "Đăng nhập" hoặc ô input Email*)
     """
-    page.goto(test_config["base_url"], wait_until="networkidle", timeout=60000)
-    enable_flutter_semantics(page)
-    flutter_fill(page, "Email", test_config["email"])
-    flutter_fill(page, "Mật khẩu", test_config["password"])
-    flutter_click_button(page, "Đăng nhập")
-    wait_for_flutter(page, text="Đăng xuất")
+    login(page, test_config)
     
     flutter_click_button(page, "Đăng xuất")
     wait_for_flutter(page, text="Đăng nhập")
@@ -55,8 +48,6 @@ def test_logout(page, test_config):
 def test_switch_language_to_english(page, test_config):
     """TC-12: Switch language to English (*Chuyển ngôn ngữ sang tiếng Anh*)
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
-
     Description (*Mô tả*):
         Log in → click "EN" button → verify UI switches to English.
         (*Đăng nhập → click nút "EN" → kiểm tra giao diện chuyển sang tiếng Anh.*)
@@ -68,12 +59,7 @@ def test_switch_language_to_english(page, test_config):
         4. Get sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
         5. Assert: "Logout" or "Borrow" or "Library" in sem_text
     """
-    page.goto(test_config["base_url"], wait_until="networkidle", timeout=60000)
-    enable_flutter_semantics(page)
-    flutter_fill(page, "Email", test_config["email"])
-    flutter_fill(page, "Mật khẩu", test_config["password"])
-    flutter_click_button(page, "Đăng nhập")
-    wait_for_flutter(page, text="Đăng xuất")
+    login(page, test_config)
     
     flutter_click_button(page, "EN")
     wait_for_flutter(page, text="Library")

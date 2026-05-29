@@ -44,8 +44,7 @@ def test_login_success(page, test_config):
     has_user_name = test_config["display_name"] in sem_text
     has_logout = "Đăng xuất" in sem_text
     assert has_user_name or has_logout, \
-        f"Login failed: '{test_config['display_name']}' or Logout button not found " \
-        f"(Đăng nhập không thành công: không tìm thấy tên hoặc nút Đăng xuất)"
+        f"Login failed: '{test_config['display_name']}' or Logout button not found"
 
 """💡 Bonus B2 — Data-Driven Testing:
         TC-02 và TC-03 có cùng pattern (nhập → click → kiểm tra lỗi).
