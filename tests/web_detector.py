@@ -2,11 +2,11 @@
 web_detector.py — Tự động nhận diện công nghệ web và chọn chiến lược tương tác.
 
 Hỗ trợ phát hiện:
-  - Flutter Web (CanvasKit / HTML renderer)
-  - React / Next.js
-  - Angular
-  - Vue.js / Nuxt.js
-  - HTML thuần (static)
+- Flutter Web (CanvasKit / HTML renderer)
+- React / Next.js
+- Angular
+- Vue.js / Nuxt.js
+- HTML thuần (static)
 
 Sử dụng:
     from web_detector import detect_technology, WebTech
