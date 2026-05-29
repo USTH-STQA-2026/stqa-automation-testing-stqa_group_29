@@ -24,7 +24,7 @@ from conftest import (
 )
 
 # =========================
-# FIXED CONFIG (CI SAFE)
+
 # =========================
 
 SEARCH_BOX = "Tìm kiếm theo tên sách hoặc tác giả..."
@@ -34,37 +34,42 @@ BOOK_CARD = 'flt-semantics[role="group"]'
 
 
 # =========================
-# HELPER SAFE WAIT
+
 # =========================
 def wait_books(page):
     wait_for_flutter(page, selector=BOOK_CARD)
 
 
 # =========================
-# TC-04 SEARCH NAME
+
 # =========================
 def test_search_book_by_name(page, test_config):
     login(page, test_config)
 
-    wait_books(page)
+    wait_for_flutter(page, selector=BOOK_CARD)
 
-    flutter_fill(page, SEARCH_BOX, "Flutter")
+    flutter_fill(
+        page,
+        SEARCH_BOX,
+        "Flutter"
+    )
 
-    wait_books(page)
+    wait_for_flutter(page, selector=BOOK_CARD)
 
     page.screenshot(
         path=os.path.join(
             SCREENSHOT_DIR,
-            "TC-04-search.png"
+            "TC-04-search_book_by_name.png"
         )
     )
 
     books = page.locator(BOOK_CARD).count()
 
     assert books > 0, \
-        f"Search page displayed no books for user {test_config['display_name']}"
+        "No books displayed after search operation"
+# =========================
 
-
+# =========================
 # =========================
 # TC-05 NO RESULT
 # =========================
@@ -76,8 +81,6 @@ def test_search_book_no_result(page, test_config):
         SEARCH_BOX,
         "xyz_khong_ton_tai_12345"
     )
-
-    page.wait_for_timeout(1000)
 
     page.screenshot(
         path=os.path.join(
@@ -96,61 +99,61 @@ def test_search_book_no_result(page, test_config):
         "Không tìm thấy" in sem_text
         or "Không có" in sem_text
         or book_count == 0
-    ), "Search should return no result"
-
-
+    ), "Search should return no matching result"
 # =========================
-# TC-06 CATEGORY
+
 # =========================
 def test_filter_by_category(page, test_config):
     login(page, test_config)
 
-    wait_books(page)
+    wait_for_flutter(page, selector=BOOK_CARD)
 
-    flutter_fill(page, CATEGORY_BOX, "Công nghệ")
-
-    wait_books(page)
-
-    page.screenshot(
-        path=os.path.join(
-            SCREENSHOT_DIR,
-            "TC-06-category.png"
-        )
+    flutter_fill(
+        page,
+        CATEGORY_BOX,
+        "Công nghệ"
     )
 
-    books = page.locator(BOOK_CARD).all()
-
-    assert len(books) > 0, \
-        f"No books displayed after filtering for user {test_config['display_name']}"
-
-    books = page.locator(BOOK_CARD).all()
-
-    assert len(books) > 0, \
-        f"No books displayed after filtering for user {test_config['display_name']}"
-
-
-# =========================
-# TC-07 AUTHOR
-# =========================
-def test_search_book_by_author(page, test_config):
-    login(page, test_config)
-
-    wait_books(page)
-
-    flutter_fill(page, SEARCH_BOX, "Nguyễn")
-
-    wait_books(page)
+    wait_for_flutter(page, selector=BOOK_CARD)
 
     page.screenshot(
         path=os.path.join(
             SCREENSHOT_DIR,
-            "TC-07-author.png"
+            "TC-06-filter_by_category.png"
         )
     )
 
     books = page.locator(BOOK_CARD).count()
 
     assert books > 0, \
-        f"Author search returned no books for user {test_config['display_name']}"
+        "No books displayed after category filtering"
     
+
+def test_search_book_by_author(page, test_config):
+    login(page, test_config)
+
+    wait_for_flutter(page, selector=BOOK_CARD)
+
+    flutter_fill(
+        page,
+        SEARCH_BOX,
+        "Nguyễn"
+    )
+
+    wait_for_flutter(page, selector=BOOK_CARD)
+
+    page.screenshot(
+        path=os.path.join(
+            SCREENSHOT_DIR,
+            "TC-07-search_book_by_author.png"
+        )
+    )
+
+    books = page.locator(BOOK_CARD).count()
+
+    assert books > 0, \
+        "No books displayed after author search"
     
+
+    
+
