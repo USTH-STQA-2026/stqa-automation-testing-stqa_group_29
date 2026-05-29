@@ -16,7 +16,7 @@ Hints (*Gợi ý*):
     (*Sau chuyển EN: text tiếng Anh có thể xuất hiện*)
 """
 import os
-from conftest import login, enable_flutter_semantics, flutter_fill, flutter_click_button, wait_for_flutter, SCREENSHOT_DIR
+from conftest import login, flutter_click_button, wait_for_flutter, SCREENSHOT_DIR
 
 def test_logout(page, test_config):
     """TC-11: Logout success (*Đăng xuất thành công*)
